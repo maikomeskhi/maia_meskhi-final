@@ -1,1 +1,936 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amindi.ge — ამინდის პროგნოზი საქართველოში</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- header -->
+    <header class="site-header">
+      <div class="utility-bar">
+        <div class="utility-inner">
+          <a href="#" class="utility-link">დახმარება</a>
+          <div class="lang-switch">
+            <button class="lang-btn active" data-lang="ge">ქარ</button>
+            <button class="lang-btn" data-lang="en">ENG</button>
+            <button class="lang-btn" data-lang="ru">РУС</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-inner">
+        <a href="#" class="logo">
+          <img
+            src="./images/header-logo.png"
+            alt="Amindi.ge"
+            class="logo-img"
+          />
+        </a>
+        <nav class="main-nav" aria-label="მთავარი ნავიგაცია">
+          <ul>
+            <li><a href="#" class="active">ამინდის პროგნოზი</a></li>
+            <li><a href="#">ჯანმრთელობა</a></li>
+            <li><a href="#">რადიო</a></li>
+            <li class="has-dropdown">
+              <a href="#"
+                >სასარგებლო ინფო
+                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M6 9L12 15L18 9"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </a>
+              <div class="nav-dropdown">
+                <a href="#">მსოფლიო დრო</a>
+                <a href="#">დღესასწაულები</a>
+                <a href="#">ვალუტა</a>
+                <a href="#">ჰოროსკოპი</a>
+              </div>
+            </li>
+            <li><a href="#">რეკლამა</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="weather-hero">
+        <div class="hero-toolbar">
+          <div class="city-wrapper">
+            <button class="toolbar-btn" id="city-select" aria-expanded="false">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M12 21C12 21 4 13.5 4 9.5A8 8 0 0120 9.5C20 13.5 12 21 12 21Z"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                />
+                <circle
+                  cx="12"
+                  cy="9.5"
+                  r="2.5"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                />
+              </svg>
+              <span id="selected-city-label">აირჩიე ქალაქი</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M6 9L12 15L18 9"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </button>
+
+            <div class="city-dropdown" id="city-dropdown" hidden>
+              <p class="city-dropdown-section">საქართველოს ქალაქები</p>
+              <div class="city-list">
+                <button class="city-item" data-city="აბასთუმანი" data-temp="11">
+                  აბასთუმანი <span>11°</span>
+                </button>
+                <button class="city-item" data-city="ახალციხე" data-temp="15">
+                  ახალციხე <span>15°</span>
+                </button>
+                <button class="city-item" data-city="ბათუმი" data-temp="20">
+                  ბათუმი <span>20°</span>
+                </button>
+                <button class="city-item" data-city="ბაკურიანი" data-temp="9">
+                  ბაკურიანი <span>9°</span>
+                </button>
+                <button class="city-item" data-city="ბოლნისი" data-temp="21">
+                  ბოლნისი <span>21°</span>
+                </button>
+                <button class="city-item" data-city="ბორჯომი" data-temp="17">
+                  ბორჯომი <span>17°</span>
+                </button>
+                <button class="city-item" data-city="გონიო" data-temp="18">
+                  გონიო <span>18°</span>
+                </button>
+                <button class="city-item" data-city="გორი" data-temp="18">
+                  გორი <span>18°</span>
+                </button>
+                <button class="city-item" data-city="გუდაური" data-temp="6">
+                  გუდაური <span>6°</span>
+                </button>
+                <button class="city-item" data-city="გურჯაანი" data-temp="20">
+                  გურჯაანი <span>20°</span>
+                </button>
+                <button
+                  class="city-item"
+                  data-city="დავით-გარეჯი"
+                  data-temp="23"
+                >
+                  დავით-გარეჯი <span>23°</span>
+                </button>
+                <button class="city-item" data-city="ზესტაფონი" data-temp="17">
+                  ზესტაფონი <span>17°</span>
+                </button>
+                <button class="city-item" data-city="ზუგდიდი" data-temp="18">
+                  ზუგდიდი <span>18°</span>
+                </button>
+                <button class="city-item" data-city="თბილისი" data-temp="23">
+                  თბილისი <span>23°</span>
+                </button>
+                <button class="city-item" data-city="თელავი" data-temp="20">
+                  თელავი <span>20°</span>
+                </button>
+                <button class="city-item" data-city="თიანეთი" data-temp="15">
+                  თიანეთი <span>15°</span>
+                </button>
+                <button class="city-item" data-city="ლაგოდეხი" data-temp="17">
+                  ლაგოდეხი <span>17°</span>
+                </button>
+                <button class="city-item" data-city="ლანჩხუთი" data-temp="18">
+                  ლანჩხუთი <span>18°</span>
+                </button>
+                <button class="city-item" data-city="მანგლისი" data-temp="14">
+                  მანგლისი <span>14°</span>
+                </button>
+                <button class="city-item" data-city="მარნეული" data-temp="21">
+                  მარნეული <span>21°</span>
+                </button>
+                <button class="city-item" data-city="მესტია" data-temp="12">
+                  მესტია <span>12°</span>
+                </button>
+                <button class="city-item" data-city="მცხეთა" data-temp="15">
+                  მცხეთა <span>15°</span>
+                </button>
+                <button class="city-item" data-city="ოზურგეთი" data-temp="14">
+                  ოზურგეთი <span>14°</span>
+                </button>
+                <button class="city-item" data-city="ომალო" data-temp="17">
+                  ომალო <span>17°</span>
+                </button>
+                <button class="city-item" data-city="ონი" data-temp="15">
+                  ონი <span>15°</span>
+                </button>
+                <button class="city-item" data-city="რუსთავი" data-temp="23">
+                  რუსთავი <span>23°</span>
+                </button>
+                <button class="city-item" data-city="საგარეჯო" data-temp="20">
+                  საგარეჯო <span>20°</span>
+                </button>
+                <button class="city-item" data-city="სამტრედია" data-temp="19">
+                  სამტრედია <span>19°</span>
+                </button>
+                <button class="city-item" data-city="საჩხერე" data-temp="17">
+                  საჩხერე <span>17°</span>
+                </button>
+                <button class="city-item" data-city="სენაკი" data-temp="19">
+                  სენაკი <span>19°</span>
+                </button>
+                <button class="city-item" data-city="სიონი" data-temp="15">
+                  სიონი <span>15°</span>
+                </button>
+                <button class="city-item" data-city="სიღნაღი" data-temp="23">
+                  სიღნაღი <span>23°</span>
+                </button>
+                <button class="city-item" data-city="სოხუმი" data-temp="19">
+                  სოხუმი <span>19°</span>
+                </button>
+                <button class="city-item" data-city="სურამი" data-temp="12">
+                  სურამი <span>12°</span>
+                </button>
+                <button class="city-item" data-city="ურეკი" data-temp="21">
+                  ურეკი <span>21°</span>
+                </button>
+                <button class="city-item" data-city="უშგული" data-temp="7">
+                  უშგული <span>7°</span>
+                </button>
+                <button class="city-item" data-city="ფოთი" data-temp="21">
+                  ფოთი <span>21°</span>
+                </button>
+                <button class="city-item" data-city="ქობულეთი" data-temp="20">
+                  ქობულეთი <span>20°</span>
+                </button>
+                <button class="city-item" data-city="ქუთაისი" data-temp="19">
+                  ქუთაისი <span>19°</span>
+                </button>
+                <button class="city-item" data-city="შატილი" data-temp="9">
+                  შატილი <span>9°</span>
+                </button>
+                <button class="city-item" data-city="შეკვეთილი" data-temp="14">
+                  შეკვეთილი <span>14°</span>
+                </button>
+                <button class="city-item" data-city="შოვი" data-temp="12">
+                  შოვი <span>12°</span>
+                </button>
+                <button class="city-item" data-city="ჩოხატაური" data-temp="18">
+                  ჩოხატაური <span>18°</span>
+                </button>
+                <button class="city-item" data-city="ცხინვალი" data-temp="14">
+                  ცხინვალი <span>14°</span>
+                </button>
+                <button class="city-item" data-city="წინანდალი" data-temp="20">
+                  წინანდალი <span>20°</span>
+                </button>
+                <button class="city-item" data-city="წყნეთი" data-temp="18">
+                  წყნეთი <span>18°</span>
+                </button>
+                <button class="city-item" data-city="ჭიათურა" data-temp="17">
+                  ჭიათურა <span>17°</span>
+                </button>
+                <button class="city-item" data-city="ხარაგაული" data-temp="17">
+                  ხარაგაული <span>17°</span>
+                </button>
+                <button class="city-item" data-city="ხაშური" data-temp="16">
+                  ხაშური <span>16°</span>
+                </button>
+                <button class="city-item" data-city="ხობი" data-temp="19">
+                  ხობი <span>19°</span>
+                </button>
+              </div>
+              <p class="city-dropdown-section">უცხოეთის ქალაქები</p>
+              <div class="city-list">
+                <button class="city-item" data-city="ათენი" data-temp="29">
+                  ათენი <span>29°</span>
+                </button>
+                <button class="city-item" data-city="ანტალია" data-temp="28">
+                  ანტალია <span>28°</span>
+                </button>
+                <button class="city-item" data-city="ბაქო" data-temp="22">
+                  ბაქო <span>22°</span>
+                </button>
+                <button class="city-item" data-city="ბუდაპეშტი" data-temp="28">
+                  ბუდაპეშტი <span>28°</span>
+                </button>
+                <button class="city-item" data-city="ვენა" data-temp="30">
+                  ვენა <span>30°</span>
+                </button>
+                <button class="city-item" data-city="თელ-ავივი" data-temp="25">
+                  თელ-ავივი <span>25°</span>
+                </button>
+                <button class="city-item" data-city="ლონდონი" data-temp="27">
+                  ლონდონი <span>27°</span>
+                </button>
+                <button class="city-item" data-city="ნიუ-იორკი" data-temp="27">
+                  ნიუ-იორკი <span>27°</span>
+                </button>
+                <button class="city-item" data-city="პარიზი" data-temp="37">
+                  პარიზი <span>37°</span>
+                </button>
+                <button class="city-item" data-city="პრაღა" data-temp="30">
+                  პრაღა <span>30°</span>
+                </button>
+                <button class="city-item" data-city="სტამბული" data-temp="21">
+                  სტამბული <span>21°</span>
+                </button>
+                <button class="city-item" data-city="ციურიხი" data-temp="28">
+                  ციურიხი <span>28°</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <form class="toolbar-search" role="search">
+            <svg viewBox="0 0 24 24" fill="none">
+              <circle
+                cx="11"
+                cy="11"
+                r="7"
+                stroke="currentColor"
+                stroke-width="1.6"
+              />
+              <path
+                d="M21 21L16.65 16.65"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+            <label for="city-search" class="visually-hidden"
+              >მოძებნე ქალაქი</label
+            >
+            <input type="text" id="city-search" placeholder="მოძებნე ქალაქი" />
+          </form>
+        </div>
+
+        <div class="hero-content">
+          <div class="hero-left">
+            <h1 class="city-name" id="city-name-display">თბილისი</h1>
+            <p class="weather-date">სამშაბათი, 18 ივნისი</p>
+            <div class="temp-display">
+              <svg class="weather-icon" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="5" fill="#FFD93B" />
+                <path
+                  d="M12 1V4M12 20V23M23 12H20M4 12H1M19.07 4.93L16.95 7.05M7.05 16.95L4.93 19.07M19.07 19.07L16.95 16.95M7.05 7.05L4.93 4.93"
+                  stroke="#FFD93B"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <span class="temp-value" id="temp-value" data-celsius="21"
+                >21°</span
+              >
+              <button class="unit-toggle" id="unit-toggle">°C</button>
+            </div>
+            <p class="weather-cond" id="weather-cond">ნაწილობრივ მზიანი</p>
+          </div>
+
+          <div class="hourly-scroll">
+            <div class="hour-card">
+              <span class="h-time">23:00</span
+              ><svg class="h-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+                  fill="rgba(255,255,255,0.6)"
+                /></svg
+              ><span class="h-temp">21°</span>
+            </div>
+            <div class="hour-card">
+              <span class="h-time">00:00</span
+              ><svg class="h-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M7 18H17C19.21 18 21 16.21 21 14C21 11.94 19.46 10.25 17.46 10.03C16.97 7.69 14.9 6 12.5 6C9.92 6 7.81 7.94 7.5 10.46C5.5 10.8 4 12.55 4 14.65C4 16.5 5.5 18 7.35 18H7Z"
+                  stroke="rgba(255,255,255,0.6)"
+                  stroke-width="1.5"
+                  fill="rgba(255,255,255,0.12)"
+                /></svg
+              ><span class="h-temp">20°</span>
+            </div>
+            <div class="hour-card">
+              <span class="h-time">01:00</span
+              ><svg class="h-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+                  fill="rgba(255,255,255,0.6)"
+                /></svg
+              ><span class="h-temp">19°</span>
+            </div>
+            <div class="hour-card">
+              <span class="h-time">02:00</span
+              ><svg class="h-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+                  fill="rgba(255,255,255,0.6)"
+                /></svg
+              ><span class="h-temp">18°</span>
+            </div>
+            <div class="hour-card">
+              <span class="h-time">03:00</span
+              ><svg class="h-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+                  fill="rgba(255,255,255,0.6)"
+                /></svg
+              ><span class="h-temp">17°</span>
+            </div>
+            <div class="hour-card">
+              <span class="h-time">04:00</span
+              ><svg class="h-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
+                  fill="rgba(255,255,255,0.6)"
+                /></svg
+              ><span class="h-temp">17°</span>
+            </div>
+            <div class="hour-card">
+              <span class="h-time">05:00</span
+              ><svg class="h-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M7 18H17C19.21 18 21 16.21 21 14C21 11.94 19.46 10.25 17.46 10.03C16.97 7.69 14.9 6 12.5 6C9.92 6 7.81 7.94 7.5 10.46C5.5 10.8 4 12.55 4 14.65C4 16.5 5.5 18 7.35 18H7Z"
+                  stroke="rgba(255,255,255,0.6)"
+                  stroke-width="1.5"
+                  fill="rgba(255,255,255,0.12)"
+                /></svg
+              ><span class="h-temp">18°</span>
+            </div>
+            <div class="hour-card">
+              <span class="h-time">06:00</span
+              ><svg class="h-icon" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="5" fill="#FFD93B" />
+                <path
+                  d="M12 1V4M12 20V23M23 12H20M4 12H1"
+                  stroke="#FFD93B"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                /></svg
+              ><span class="h-temp">19°</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="main-3col">
+        <aside class="col-left">
+          <div class="wind-panel">
+            <h2 class="panel-title">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M3 8H14C15.66 8 17 6.66 17 5C17 3.34 15.66 2 14 2C12.71 2 11.61 2.83 11.17 4M3 16H17C18.66 16 20 17.34 20 19C20 20.66 18.66 22 17 22C15.71 22 14.61 21.17 14.17 20M3 12H10"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                />
+              </svg>
+              ქარი და წნევა
+            </h2>
+            <dl class="wind-stats">
+              <div class="stat-row main">
+                <dt>ქარის სიჩქარე</dt>
+                <dd>7 kph, SSE</dd>
+              </div>
+              <div class="stat-row main">
+                <dt>წნევა</dt>
+                <dd>101.60 kpa</dd>
+              </div>
+              <div class="stat-row">
+                <dt>ტემპ. მგრძნობელობა</dt>
+                <dd>22°</dd>
+              </div>
+              <div class="stat-row">
+                <dt>ქარის მგრძნობელობა</dt>
+                <dd>21°</dd>
+              </div>
+              <div class="stat-row">
+                <dt>ტენიანობა</dt>
+                <dd>50%</dd>
+              </div>
+              <div class="stat-row">
+                <dt>ხილვადობა</dt>
+                <dd>16 km</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="currency-panel">
+            <h2 class="currency-title">ოფიციალური კურსი</h2>
+            <table class="currency-table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>18 ივნ</th>
+                  <th>19 ივნ</th>
+                  <th>ცვლ.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1 USD</th>
+                  <td>2.6543</td>
+                  <td>2.6527</td>
+                  <td class="rate-down">-0.06%</td>
+                </tr>
+                <tr>
+                  <th scope="row">1 EUR</th>
+                  <td>3.0787</td>
+                  <td>3.0408</td>
+                  <td class="rate-down">-1.23%</td>
+                </tr>
+                <tr>
+                  <th scope="row">100 RUB</th>
+                  <td>3.6482</td>
+                  <td>3.6199</td>
+                  <td class="rate-down">-0.78%</td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="all-currency-btn">ყველა ვალუტა</button>
+          </div>
+        </aside>
+
+        <div class="col-center">
+          <div class="forecast-card">
+            <h2 class="forecast-header">ამინდი დღეების მიხედვით</h2>
+            <div class="forecast-days">
+              <article class="forecast-day">
+                <p class="day-name">სუბ.<br />18 ივნ</p>
+                <svg class="day-icon" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 18H17C19.21 18 21 16.21 21 14C21 11.94 19.46 10.25 17.46 10.03C16.97 7.69 14.9 6 12.5 6C9.92 6 7.81 7.94 7.5 10.46C5.5 10.8 4 12.55 4 14.65C4 16.5 5.5 18 7.35 18H7Z"
+                    stroke="#4361ee"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M8 21L7 22M12 21L11 22M16 21L15 22"
+                    stroke="#4361ee"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <p class="day-temp">18° <span>28°</span></p>
+              </article>
+              <article class="forecast-day">
+                <p class="day-name">პარ.<br />19 ივნ</p>
+                <svg class="day-icon" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="5" fill="#FFD93B" />
+                  <path
+                    d="M12 1V4M12 20V23M23 12H20M4 12H1M19.07 4.93L16.95 7.05M7.05 16.95L4.93 19.07M19.07 19.07L16.95 16.95M7.05 7.05L4.93 4.93"
+                    stroke="#FFD93B"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <p class="day-temp">19° <span>32°</span></p>
+              </article>
+              <article class="forecast-day">
+                <p class="day-name">შაბ.<br />20 ივნ</p>
+                <svg class="day-icon" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 18H17C19.21 18 21 16.21 21 14C21 11.94 19.46 10.25 17.46 10.03C16.97 7.69 14.9 6 12.5 6C9.92 6 7.81 7.94 7.5 10.46C5.5 10.8 4 12.55 4 14.65C4 16.5 5.5 18 7.35 18H7Z"
+                    stroke="#4361ee"
+                    stroke-width="1.5"
+                    fill="#eef1ff"
+                  />
+                </svg>
+                <p class="day-temp">19° <span>32°</span></p>
+              </article>
+              <article class="forecast-day">
+                <p class="day-name">კვირა<br />21 ივნ</p>
+                <svg class="day-icon" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 18H17C19.21 18 21 16.21 21 14C21 11.94 19.46 10.25 17.46 10.03C16.97 7.69 14.9 6 12.5 6C9.92 6 7.81 7.94 7.5 10.46C5.5 10.8 4 12.55 4 14.65C4 16.5 5.5 18 7.35 18H7Z"
+                    stroke="#4361ee"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M8 21L7 22M12 21L11 22M16 21L15 22"
+                    stroke="#4361ee"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <p class="day-temp">18° <span>28°</span></p>
+              </article>
+              <article class="forecast-day">
+                <p class="day-name">ორშ.<br />22 ივნ</p>
+                <svg class="day-icon" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 18H17C19.21 18 21 16.21 21 14C21 11.94 19.46 10.25 17.46 10.03C16.97 7.69 14.9 6 12.5 6C9.92 6 7.81 7.94 7.5 10.46C5.5 10.8 4 12.55 4 14.65C4 16.5 5.5 18 7.35 18H7Z"
+                    stroke="#4361ee"
+                    stroke-width="1.5"
+                  />
+                  <path
+                    d="M8 21L7 22M12 21L11 22M16 21L15 22"
+                    stroke="#4361ee"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <p class="day-temp">17° <span>27°</span></p>
+              </article>
+            </div>
+            <nav class="forecast-tabs">
+              <button class="tab-btn active" data-range="5">5 დღის</button>
+              <button class="tab-btn" data-range="10">10 დღის</button>
+              <button class="tab-btn" data-range="14">2 კვირის</button>
+              <button class="tab-btn" data-range="30">1 თვის</button>
+              <button class="tab-btn" data-range="moon">მთვარის ფაზები</button>
+            </nav>
+          </div>
+
+          <div class="video-card">
+            <video
+              width="100%"
+              controls
+              style="background: black; display: block"
+            >
+              <source src="/images/droni-2-291539.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <aside class="col-right">
+          <div class="ad-slot">სარეკლამო ადგილი</div>
+          <button
+            class="converter-btn"
+            id="converter-toggle"
+            aria-expanded="false"
+          >
+            <span>კონვერტორი</span>
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M6 9L12 15L18 9"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <div class="converter-panel" id="converter-panel" hidden>
+            <div class="conv-pair">
+              <div class="conv-col">
+                <label for="celsius-input">C°</label>
+                <input type="number" id="celsius-input" placeholder="0" />
+              </div>
+              <button class="conv-swap" aria-label="გადართვა">⇄</button>
+              <div class="conv-col">
+                <label for="fahrenheit-input">F°</label>
+                <input
+                  type="number"
+                  id="fahrenheit-input"
+                  placeholder="0"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="conv-divider"></div>
+            <div class="conv-pair">
+              <div class="conv-col">
+                <label for="km-input">კმ</label>
+                <input type="number" id="km-input" placeholder="0" />
+              </div>
+              <button class="conv-swap" aria-label="გადართვა">⇄</button>
+              <div class="conv-col">
+                <label for="mile-input">მილი</label>
+                <input type="number" id="mile-input" placeholder="0" readonly />
+              </div>
+            </div>
+            <div class="conv-divider"></div>
+            <div class="conv-pair">
+              <div class="conv-col">
+                <label for="usd-input">USD</label>
+                <input type="number" id="usd-input" placeholder="0" />
+              </div>
+              <button class="conv-swap" aria-label="კურსი">⇄</button>
+              <div class="conv-col">
+                <label for="gel-from-usd-input">GEL</label>
+                <input
+                  type="number"
+                  id="gel-from-usd-input"
+                  placeholder="0"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="conv-divider"></div>
+            <div class="conv-pair">
+              <div class="conv-col">
+                <label for="eur-input">EUR</label>
+                <input type="number" id="eur-input" placeholder="0" />
+              </div>
+              <button class="conv-swap" aria-label="კურსი">⇄</button>
+              <div class="conv-col">
+                <label for="gel-from-eur-input">GEL</label>
+                <input
+                  type="number"
+                  id="gel-from-eur-input"
+                  placeholder="0"
+                  readonly
+                />
+              </div>
+            </div>
+          </div>
+          <div class="ad-slot">სარეკლამო ადგილი</div>
+        </aside>
+      </div>
+
+      <!-- News section -->
+      <section class="news-section">
+        <h2 class="section-banner">სიახლეები</h2>
+        <div class="city-carousel">
+          <button class="carousel-arrow" id="carousel-prev" aria-label="წინა">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M15 18L9 12L15 6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <div class="carousel-track" id="carousel-track">
+            <article class="city-card">
+              <div class="city-card-img city-bg-1">
+                <span class="city-card-temps" id="city-temps-0">26° / 14°</span>
+              </div>
+              <p class="city-card-name" id="city-name-0">ბორჯომი</p>
+            </article>
+            <article class="city-card">
+              <div class="city-card-img city-bg-2">
+                <span class="city-card-temps" id="city-temps-1">22° / 12°</span>
+              </div>
+              <p class="city-card-name" id="city-name-1">სურამი</p>
+            </article>
+            <article class="city-card">
+              <div class="city-card-img city-bg-1">
+                <span class="city-card-temps" id="city-temps-2">28° / 16°</span>
+              </div>
+              <p class="city-card-name" id="city-name-2">მცხეთა</p>
+            </article>
+            <article class="city-card">
+              <div class="city-card-img city-bg-2">
+                <span class="city-card-temps" id="city-temps-3">30° / 17°</span>
+              </div>
+              <p class="city-card-name" id="city-name-3">გორი</p>
+            </article>
+            <article class="city-card">
+              <div class="city-card-img city-bg-1">
+                <span class="city-card-temps" id="city-temps-4">24° / 11°</span>
+              </div>
+              <p class="city-card-name" id="city-name-4">ახალციხე</p>
+            </article>
+            <article class="city-card">
+              <div class="city-card-img city-bg-2">
+                <span class="city-card-temps" id="city-temps-5">27° / 15°</span>
+              </div>
+              <p class="city-card-name" id="city-name-5">სიღნაღი</p>
+            </article>
+          </div>
+          <button
+            class="carousel-arrow"
+            id="carousel-next"
+            aria-label="შემდეგი"
+          >
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M9 6L15 12L9 18"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="news-grid">
+          <article class="news-card">
+            <div
+              class="news-img"
+              style="background-image: url(&quot;./images/elnino.jpg&quot;)"
+            ></div>
+            <p class="news-date">18-06-2026</p>
+            <p class="news-title">
+              El Niño მოვლენა — რას ნიშნავს 2026 წლის ამინდისთვის
+            </p>
+          </article>
+          <article class="news-card">
+            <div
+              class="news-img"
+              style="background-image: url(&quot;./images/sicxe.jpg&quot;)"
+            ></div>
+            <p class="news-date">15-06-2026</p>
+            <p class="news-title">
+              სად არის მოსალოდნელი ყველაზე მაღალი ტემპერატურა
+            </p>
+          </article>
+          <article class="news-card">
+            <div
+              class="news-img"
+              style="background-image: url(&quot;./images/setyva.jpg&quot;)"
+            ></div>
+            <p class="news-date">12-06-2026</p>
+            <p class="news-title">
+              სეტყვის რისკი ზოგიერთ რეგიონში სიცხის ფონზე
+            </p>
+          </article>
+          <article class="news-card">
+            <div
+              class="news-img"
+              style="background-image: url(&quot;./images/wvima.jpg&quot;)"
+            ></div>
+            <p class="news-date">11-06-2026</p>
+            <p class="news-title">
+              წვიმის შემდეგ ტენიანობის მატება — რას ველოდოთ
+            </p>
+          </article>
+        </div>
+        <button class="panel-btn">ყველა სიახლე</button>
+      </section>
+
+      <!-- Astrology section -->
+      <section class="astrology-section">
+        <div class="astro-wrap">
+          <div class="astro-bar">
+            <div class="astro-logo">
+              <img
+                src="./images/ast-logo.svg"
+                alt="Astrologi"
+                class="astro-logo-img"
+              />
+            </div>
+            <div class="zodiac-strip" id="zodiac-row">
+              <button class="zodiac-btn sign-fire" data-sign="0">
+                <img src="./images/aries.svg" alt="" class="zodiac-img" /><span
+                  class="zodiac-name"
+                  >ვერძი</span
+                >
+              </button>
+              <button class="zodiac-btn sign-earth" data-sign="1">
+                <img src="./images/taurus.svg" alt="" class="zodiac-img" /><span
+                  class="zodiac-name"
+                  >კურო</span
+                >
+              </button>
+              <button class="zodiac-btn sign-air" data-sign="2">
+                <img src="./images/gemini.svg" alt="" class="zodiac-img" /><span
+                  class="zodiac-name"
+                  >ტყუპები</span
+                >
+              </button>
+              <button class="zodiac-btn sign-water" data-sign="3">
+                <img src="./images/cancer.svg" alt="" class="zodiac-img" /><span
+                  class="zodiac-name"
+                  >კირჩხიბი</span
+                >
+              </button>
+              <button class="zodiac-btn sign-fire" data-sign="4">
+                <img src="./images/leo.svg" alt="" class="zodiac-img" /><span
+                  class="zodiac-name"
+                  >ლომი</span
+                >
+              </button>
+              <button class="zodiac-btn sign-earth" data-sign="5">
+                <img src="./images/virgo.svg" alt="" class="zodiac-img" /><span
+                  class="zodiac-name"
+                  >ქალწული</span
+                >
+              </button>
+              <button class="zodiac-btn sign-air" data-sign="6">
+                <img src="./images/libra.svg" alt="" class="zodiac-img" /><span
+                  class="zodiac-name"
+                  >სასწორი</span
+                >
+              </button>
+              <button class="zodiac-btn sign-water" data-sign="7">
+                <img
+                  src="./images/scorpio.svg"
+                  alt=""
+                  class="zodiac-img"
+                /><span class="zodiac-name">მორიელი</span>
+              </button>
+              <button class="zodiac-btn sign-fire" data-sign="8">
+                <img
+                  src="./images/sagittarius.svg"
+                  alt=""
+                  class="zodiac-img"
+                /><span class="zodiac-name">მშვილდოსანი</span>
+              </button>
+              <button class="zodiac-btn sign-earth" data-sign="9">
+                <img
+                  src="./images/capricorn.svg"
+                  alt=""
+                  class="zodiac-img"
+                /><span class="zodiac-name">თხის რქა</span>
+              </button>
+              <button class="zodiac-btn sign-air" data-sign="10">
+                <img
+                  src="./images/aquarius.svg"
+                  alt=""
+                  class="zodiac-img"
+                /><span class="zodiac-name">მერწყული</span>
+              </button>
+              <button class="zodiac-btn sign-water" data-sign="11">
+                <img src="./images/pisces.svg" alt="" class="zodiac-img" /><span
+                  class="zodiac-name"
+                  >თევზები</span
+                >
+              </button>
+            </div>
+          </div>
+          <div class="horoscope-box">
+            <div class="horo-date-block">
+              <span class="horo-day-num" id="horo-day">26</span>
+              <span class="horo-month">ივნისი</span>
+            </div>
+            <div class="horo-content">
+              <h2 class="horo-title">დღის ზოგადი ასტროლოგიური პროგნოზი</h2>
+              <hr class="horo-divider" />
+              <p class="horo-text" id="horo-text">
+                დააჭირე ზემოთ ნებისმიერ ზოდიაქოს ნიშანს და ნახე შენი პროგნოზი.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <a href="#" class="footer-logo">
+          <img
+            src="./images/header-logo.png"
+            alt="Amindi.ge"
+            class="footer-logo-img"
+          />
+        </a>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="#">ამინდის პროგნოზი</a></li>
+            <li><a href="#">ჯანმრთელობა</a></li>
+            <li><a href="#">რადიო</a></li>
+            <li><a href="#">სასარგებლო ინფო</a></li>
+            <li><a href="#">რეკლამა</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="footer-copy">
+        © 2026 amindi.ge — საგანმანათლებლო პროექტი ვებ-პროგრამირების კურსისთვის
+      </p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
 
